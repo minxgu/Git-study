@@ -1,7 +1,7 @@
 # Git 시작하기
 - Git 다운로드 : https://git-scm.com/
 - 작업할 로컬 저장소 생성
-- 연결할 폴더에 마우스를 올리고 우측 클릭 후 `Git Bash Here` 열기
+- 생성한 폴더에 마우스를 올리고 우측 클릭 후 `Git Bash Here` 열기
 
 
 ## Git 기본설정
