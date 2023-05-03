@@ -143,48 +143,24 @@ $ git checkout -b new
 - 문법은 `git merge [브랜치명]` 입니다.
 ```bash
 $ git merge new
+
+> merge 사용 예
+# Start a new feature
+$ git checkout -b new-feature master
+
+# Edit some files
+$ git add <file>
+$ git commit -m "Start a feature"
+$ git add <file>
+$ git commit -m "Finish a feature"
+
+# Merge in the new-feature branch
+git checkout master
+git merge new-feature
+git branch -d new-feature
 ```
 
 
----------------------------------------------------------------------------------------------------------------------------------------------------
-### :pushpin: **소스 병합**
-
-
-- 아래는 머지해야 하는 상황을 구현해봤습니다.
-- `master`에서 `sub` branch가 생성되었으며, master 브랜치에서 sub 브랜치를 머지하고자 합니다.
-- 파일 구성은 아래와 같습니다.
-
-```plaintext
-* master -> some_file.txt의 내용
-* 1번째 단계 HEAD
-I'm a file.
-```
-
-```plaintext
-* sub -> some_file.txt의 내용
-* 2번째 단계 HEAD (최신)
-I'm a file.
-    
-Inserted new line from the sub branch.
-```
-
-```bash
-$ git checkout -f master
-$ git merge sub
-# 현재 브랜치 master, 대상 브랜치 sub.
-# master에서 sub를 머지합니다.
-# HEAD -> master
-# sub  -> sub
-```
-
-- 머지 이후 master에서 파일을 보면, 아래와 같은 내용을 얻습니다.
-
-```plaintext
-* merge 이후 master -> some_file.txt
-I'm a file.
-    
-Inserted new line from the sub branch.
-```
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 ### :pushpin: **소스검토**
@@ -213,6 +189,3 @@ $ git diff
 $ git diff --cached
 $ git diff HEAD
 ```
-
-
-
