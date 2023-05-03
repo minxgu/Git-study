@@ -144,14 +144,14 @@ $ git checkout -b new
 ```bash
 $ git merge new
 
-> merge 사용 예
+< merge 사용 예 >
 # Start a new feature
 $ git checkout -b new-feature master
 
-# Edit some files
-$ git add <file>
+# 파일 수정
+$ git add test.html
 $ git commit -m "Start a feature"
-$ git add <file>
+$ git add test.html
 $ git commit -m "Finish a feature"
 
 # Merge in the new-feature branch
@@ -160,7 +160,12 @@ git merge new-feature
 git branch -d new-feature
 ```
 
+### $ git fatch
+- 원격 저장소의 변경사항을 로컬 저장소로 가져온다. 이때 git pull과 다르게 병합은 하지 않는다.
+```bash
+$ git fetch
 
+```
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 ### :pushpin: **소스검토**
@@ -178,6 +183,7 @@ $ git status
 ### $ git log
 - commit 내역 조회
 ```bash
+$ git log
 $ git log --all --online
 ```
 
