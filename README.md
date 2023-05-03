@@ -4,6 +4,7 @@
 - 생성한 폴더에 마우스를 올리고 우측 클릭 후 `Git Bash Here` 열기
 
 
+
 ### :pushpin: **기본설정**
 > Visual Studio Code 에서 터미널 여는 단축키 `Ctrl + Shift + ~`
 ### $ git config
@@ -110,11 +111,14 @@ $ git reset HEAD^ --soft
 # 브랜치 생성
 $ git branch new
 
-# merge 가 완료된 브랜치 삭제
+# 브랜치 삭제 - 브랜치에 병합되지 않은 변경이 남아있는 경우 삭제되지 않아 이 명령은 “안전한” 작업이다. (merge O)
 $ git branch -d new
 
-# merge 하지 않은 브랜치 삭제
+# 브랜치에 병합되지 않은 변경이 남아 있었다고 해도 강제로 삭제 (merge X)
 $ git branch -D new
+
+# 현재 브랜치의 이름 변경
+$ git branch -m <branch>
 ```
 - 삭제된 브랜치 또한 원격 저장소에 반영을 해야합니다.
 - 이때 브랜치 명 앞에 콜론(:)을 붙여주어야 하니 이 점 주의해주세요.
@@ -182,18 +186,14 @@ Inserted new line from the sub branch.
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 ### :pushpin: **소스검토**
 ### $ git status
-- git 상태창으로 로컬저장소와 스테이징 영역의 상태를 확인하기 위해서 사용합니다.
+- 작업 디렉토리의 상태와 스테이지 된 스냅 샷의 상태를 표시하는 명령이다.
+- 스테이지 된 변경 내용, 스테이지가 되지 않은 변경 내용, Git에 의한 추적 대상에서 제외 된 파일이 표시된다.
 ```bash
 $ git status
 
-# 결과 1. Unmodified
-# > 마지막 커밋 이후 아직 아무것도 수정하지 않은 파일의 상태
-
-# 결과 2. Modified
-# > Unmodified 상태 파일을 수정한 상태
-
-# 결과 3. Staged
-# > Modified상태 파일을 스테이징 영역에 추가한 상태
+# Changes to be committed: ~
+# Changes not staged for commit: ~
+# Untracked files: ~
 ```
 
 ### $ git log
@@ -201,10 +201,14 @@ $ git status
 ```bash
 $ git log --all --online
 ```
+
 ### $ git diff
-- 최근 commit과 현재 파일을 비교해서 보여준다.
+- 마지막 git commit과 현재 작업 트리에서 git add하지 않은 파일 간의 차이를 표시한다.
 ```bash
 $ git diff
+
+$ git diff --cached
+$ git diff HEAD
 ```
 
 
