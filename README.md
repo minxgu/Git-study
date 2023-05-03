@@ -4,8 +4,8 @@
 - 생성한 폴더에 마우스를 올리고 우측 클릭 후 `Git Bash Here` 열기
 
 
-## :pushpin: 기본설정
-- Visual Studio Code 에서 터미널 여는 단축키 `Ctrl + Shift + ~`
+### :pushpin: **기본설정**
+> Visual Studio Code 에서 터미널 여는 단축키 `Ctrl + Shift + ~`
 ### $ git config
 - 처음 시작하는 것이라면 git의 config 과정을 진행해야합니다.
 - `git config` 명령어를 이용하여 계정에 대한 정보를 설정합니다.
@@ -35,8 +35,8 @@ $ git remote add origin https://github.com/minxgu/Git-study.git
 $ git clone https://github.com/minxgu/Git-study.git
 ```
 
-
-## :pushpin: 소스기록
+---------------------------------------------------------------------------------------------------------------------------------------------------
+### :pushpin: **소스기록**
 ### $ git add
 - 소스를 스테이징 하기 위해서는 `git add` 명령어를 이용합니다.
  ```bash
@@ -56,11 +56,9 @@ $ git add test.html test2.html
 - `-m` 옵션을 이용하여 `commit mesaage`를 작성하는 것을 권장합니다.
 - 실수로 커밋을 하여, 다시 커밋을 할 경우 커밋을 덮어씌울 수 있습니다. 이때 `--amend` 옵션을 이용합니다.
 ```bash
-$ git add .
 $ git commit -m "test 작업"
 
 # 수정사항 발생
-$ git add .
 $ git commit -m "test 작업 수정 후 abc 추가" --amend
 ```
 
@@ -71,19 +69,143 @@ $ git commit -m "test 작업 수정 후 abc 추가" --amend
 $ git push origin master
 ```
 
-
-## :pushpin: 소스업데이트
-### $ git pull
-- 상대방이 커밋한 파일은 명령어를 통해서 직접 업데이트를 하셔야 동기화가 됩니다.
+---------------------------------------------------------------------------------------------------------------------------------------------------
+### :pushpin: **소스업데이트**
+- 상대방이 커밋한 파일은 명령어를 통해서 직접 업데이트를 하셔야 동기화가 됩니다.  
 - 이때 사용하는 명령어는 `git pull`과 `git fetch`가 있습니다.
-```bash
-# master 브랜치를 pull하여 업데이트
-$ git pull origin master
-  
-# master 브랜치를 fetch하여 업데이트
-$ git fetch origin master
-```
+
+### $ git pull
 - `pull` 과 `fetch` 의 차이점은 `merge` 작업을 하느냐 안하느냐로 나뉘어지며.
 - `pull` 은 `fetch` + `merge` 작업이라고 생각하시면 됩니다.
+- master 브랜치를 pull하여 업데이트
+```bash
+$ git pull origin master
+```
+### $ git fetch
+```bash
+$ git fetch origin master
+```
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+### :pushpin: 소스 복원
+- 여러분이 git을 쓰는 이유중에 중요한 부분을 차지하는 영역입니다.
+- 정상적으로 커밋된 히스토리는, 리비전으로 git에 관리됩니다.
+- 실수로 잘못 작업하였거나, 예전 버전으로 롤백하여 적용할 경우 여러분은 예전 버전으로 리셋하실 수 있습니다.
+- 리셋은 `git reset` 명령을 사용합니다.
+
+```bash
+$ git reset HEAD^ --soft
+```
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+### :pushpin: **브랜치**
+> 브랜치는 한국말로 가지(branch)입니다.  
+> git에서는 마치 가지를 펼치듯 하나의 근본에서 여러 갈래로 쪼개어 관리할 수 있습니다.
+
+### $ git branch
+- 기본은 master 브랜치라고 불리며, 필수로 제공되는 브랜치이다.
+- 브랜치를 새로 만드신다면 `git branch [브랜치명]`으로 생성합니다.
+- 브랜치의 삭제는 `git branch` 명령에서 `-d` 옵션을 사용합니다.
+```bash
+# 브랜치 생성
+$ git branch new
+
+# merge 가 완료된 브랜치 삭제
+$ git branch -d new
+
+# merge 하지 않은 브랜치 삭제
+$ git branch -D new
+```
+- 삭제된 브랜치 또한 원격 저장소에 반영을 해야합니다.
+- 이때 브랜치 명 앞에 콜론(:)을 붙여주어야 하니 이 점 주의해주세요.
+```bash
+$ git branch -d new
+$ git push origin :new
+```
+
+### $ git checkout
+- master 기준으로 new를 브랜치하면 master와 똑같은 소스코드가 new에도 적용됩니다.
+- 하지만 이 이후로 new에서 코드를 수정하면, master와 new는 서로 다른 코드가 되기 때문에 갈라집니다.
+- 생성된 new 브랜치로 접속하기 위해서는 `git checkout [브랜치명]`을 이용합니다.
+```bash
+$ git checkout new
+
+# 브랜치 생성과 동시에 체크아웃 하고자 하면 "-b" 옵션 이용
+$ git checkout -b new
+```
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+### :pushpin: **소스 병합**
+
+- 브랜치를 사용하는 과정에서 가장 중요한 머지와 리베이스 등의 병합 기법입니다.
+- 서로 다른 브랜치에서 서로 다른 코드가 개발되었고, 실제 배포에서 이를 합쳐야 할 때 사용합니다.
+- 병합 방식에서는 크게 `git merge`와 `git rebase`가 존재합니다.
+- 머지 방식과 리베이스 방식의 차이는 아래 이미지를 확인해주세요.
+
+- 아래는 머지해야 하는 상황을 구현해봤습니다.
+- `master`에서 `sub` branch가 생성되었으며, master 브랜치에서 sub 브랜치를 머지하고자 합니다.
+- 파일 구성은 아래와 같습니다.
+
+```plaintext
+* master -> some_file.txt의 내용
+* 1번째 단계 HEAD
+I'm a file.
+```
+
+```plaintext
+* sub -> some_file.txt의 내용
+* 2번째 단계 HEAD (최신)
+I'm a file.
+    
+Inserted new line from the sub branch.
+```
+
+```bash
+$ git checkout -f master
+$ git merge sub
+# 현재 브랜치 master, 대상 브랜치 sub.
+# master에서 sub를 머지합니다.
+# HEAD -> master
+# sub  -> sub
+```
+
+- 머지 이후 master에서 파일을 보면, 아래와 같은 내용을 얻습니다.
+
+```plaintext
+* merge 이후 master -> some_file.txt
+I'm a file.
+    
+Inserted new line from the sub branch.
+```
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+### :pushpin: **소스검토**
+### $ git status
+- git 상태창으로 로컬저장소와 스테이징 영역의 상태를 확인하기 위해서 사용합니다.
+```bash
+$ git status
+
+# 결과 1. Unmodified
+# > 마지막 커밋 이후 아직 아무것도 수정하지 않은 파일의 상태
+
+# 결과 2. Modified
+# > Unmodified 상태 파일을 수정한 상태
+
+# 결과 3. Staged
+# > Modified상태 파일을 스테이징 영역에 추가한 상태
+```
+
+### $ git log
+- commit 내역 조회
+```bash
+$ git log --all --online
+```
+### $ git diff
+- 최근 commit과 현재 파일을 비교해서 보여준다.
+```bash
+$ git diff
+```
+
 
 
