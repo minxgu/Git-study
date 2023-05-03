@@ -3,7 +3,9 @@
 - 작업할 로컬 저장소 생성
 - 연결할 폴더에 마우스를 올리고 우측 클릭 후 `Git Bash Here` 열기
 
-## Git 기본 명령어
+
+## Git 기본설정
+- Visual Studio Code 에서 터미널 여는 단축키 `Ctrl + Shift + ~`
 ### $ git config
 - 처음 시작하는 것이라면 git의 config 과정을 진행해야합니다.
 - `git config` 명령어를 이용하여 계정에 대한 정보를 설정합니다.
@@ -22,7 +24,7 @@ $ git init
 ### $ git remote
 - `git remote`란 git을 원격저장소에 저장하는 앤드포인트를 의미합니다.
 ```bash
-$ git remote add origin https://github.com/KennethanCeyer/tutorial.git
+$ git remote add origin https://github.com/minxgu/Git-study.git
 ```
 
 ### $ git clone
@@ -30,6 +32,6 @@ $ git remote add origin https://github.com/KennethanCeyer/tutorial.git
 - 이때 `git clone` 명령어를 사용하여 복사를 시작합니다.
 - `git clone`을 통해 원격파일을 복사해오면, `origin` 에는 기본적으로 클론해온 리모트 URL이 저장되있습니다.
 ```bash
-$ git clone https://github.com/KennethanCeyer/tutorial.git
+$ git clone https://github.com/minxgu/Git-study.git
 ```
 
