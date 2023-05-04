@@ -101,7 +101,8 @@ $ git fetch origin master
 &nbsp;
 
 ### :pushpin: 소스 복원
-> 커밋을 아예 취소하거나 `git reset`, 커밋 내용을 되돌리거나 `git revert`, 기존 커밋을 덮어써야하는 `--amend` 상황에 쓰이는 명령어입니다.
+> 커밋을 아예 취소하거나 `git reset`, 커밋 내용을 되돌리거나 `git revert`,  
+> 기존 커밋을 덮어써야하는 `--amend` 상황에 쓰이는 명령어입니다.
 
 ### $ git reset
 - 커밋 취소하기
@@ -112,15 +113,17 @@ $ git commit -m "1"
 $ git commit -m "2"
 $ git commit -m "3"
 
-# 이전 커밋으로 돌아가기
+# 가장 최근의 commit이 취소된다.(기본 옵션 mixed)
 $ git reset HEAD^
 
+# --mixed = 변경 이력은 모두 삭제하지만 변경 내용은 유지
+$ git reset --mixed abcdefg
+
 # --hard = 돌아간 커밋 이후의 변경 이력 모두 삭제
-$ git reset --hard [1번commit hash]
+$ git reset --hard abcdefg
 
-# --soft =
-
-
+# --soft = 변경 이력은 모두 삭제하지만 변경 내용은 유지 / 리셋 후 코드반영시 add 하지 않아도 바로 커밋 가능 (stage)
+$ fit reset --soft abcdefg
 ```
 
 ### $ git revert
