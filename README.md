@@ -116,20 +116,30 @@ $ git commit -m "3"
 # 가장 최근의 commit이 취소된다.(기본 옵션 mixed)
 $ git reset HEAD^
 
-# --mixed = 변경 이력은 모두 삭제하지만 변경 내용은 유지
-$ git reset --mixed abcdefg
-
 # --hard = 돌아간 커밋 이후의 변경 이력 모두 삭제
 $ git reset --hard abcdefg
 
+# --mixed = 변경 이력은 모두 삭제하지만 변경 내용은 유지
+$ git reset --mixed abcdefg
+
 # --soft = 변경 이력은 모두 삭제하지만 변경 내용은 유지 / 리셋 후 코드반영시 add 하지 않아도 바로 커밋 가능 (stage)
 $ fit reset --soft abcdefg
+
+# origin / main branch 일치시킨다.
+$ git reset --hard origin/main
 ```
 
 ### $ git revert
-- 
+- 커밋 내용 되돌리기
 ```bash
-$ $ git revert
+#특정 커밋의 내용만을 되돌리기에 코드충돌을 최소화 한다.
+$ git revert 2664ce8(돌아갈 COMMIT ID)
+
+#여러개의 커밋 내역도 취소가 가능하다.
+$ git revert 2664ce8(돌아갈 COMMIT ID) 2234ce9(돌아갈 COMMIT ID)
+
+# 최근 커밋을 취소 한다.
+$ git revert HEAD
 ```
 
 ### $ git restore
