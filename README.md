@@ -101,13 +101,25 @@ $ git fetch origin master
 &nbsp;
 
 ### :pushpin: 소스 복원
-- 여러분이 git을 쓰는 이유중에 중요한 부분을 차지하는 영역입니다.
-- 정상적으로 커밋된 히스토리는, 리비전으로 git에 관리됩니다.
-- 실수로 잘못 작업하였거나, 예전 버전으로 롤백하여 적용할 경우 여러분은 예전 버전으로 리셋하실 수 있습니다.
-- 리셋은 `git reset` 명령을 사용합니다.
+> 
 
+### $ git reset
+- 
 ```bash
-$ git reset HEAD^ --soft
+
+$ git reset
+```
+
+### $ git revert
+- 
+```bash
+$ $ git revert
+```
+
+### $ git restore
+- 
+```bash
+$ git restore
 ```
 
 &nbsp;
