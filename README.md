@@ -25,13 +25,13 @@ $ git config --global user.email "minxgu@mail.com"
 $ git init
 ```
 
-#### $ git remote
+### $ git remote
 - `git remote`란 git을 원격저장소에 저장하는 앤드포인트를 의미합니다.
 ```bash
 $ git remote add origin https://github.com/minxgu/Git-study.git
 ```
 
-#### $ git clone
+### $ git clone
 - git 리모트 URL을 이용하여 원격저장소에 저장된 파일을 컴퓨터로 복사해올 수 있습니다.
 - 이때 `git clone` 명령어를 사용하여 복사를 시작합니다.
 - `git clone`을 통해 원격파일을 복사해오면, `origin` 에는 기본적으로 클론해온 리모트 URL이 저장되있습니다.
