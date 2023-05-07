@@ -105,8 +105,8 @@ $ git fetch origin master
 > 기존 커밋을 덮어써야하는 `--amend` 상황에 쓰이는 명령어입니다.
 
 ### $ git reset
-- 커밋 취소하기
-- 사용법 `git reset --option [돌아갈커밋]`
+- 커밋을 취소하는 명령어로 혼자만 사용하는 브랜치인 경우에만 사용을 권장합니다.
+- 기본문법 `git reset --option [돌아갈커밋]`
 ```bash
 < reset 사용 예 >
 $ git commit -m "1"
@@ -124,18 +124,15 @@ $ git reset --mixed abcdefg
 
 # --soft = 변경 이력은 모두 삭제하지만 변경 내용은 유지 / 리셋 후 코드반영시 add 하지 않아도 바로 커밋 가능 (stage)
 $ fit reset --soft abcdefg
-
-# origin / main branch 일치시킨다.
-$ git reset --hard origin/main
 ```
 
 ### $ git revert
-- 커밋 내용 되돌리기
+- revert는 reset과 다르게 커밋을 삭제하는 것이 아닌 커밋을 추가합니다.
 ```bash
-#특정 커밋의 내용만을 되돌리기에 코드충돌을 최소화 한다.
+# 특정 커밋의 내용만을 되돌리기에 코드충돌을 최소화 한다.
 $ git revert 2664ce8(돌아갈 COMMIT ID)
 
-#여러개의 커밋 내역도 취소가 가능하다.
+# 여러개의 커밋 내역도 취소가 가능하다.
 $ git revert 2664ce8(돌아갈 COMMIT ID) 2234ce9(돌아갈 COMMIT ID)
 
 # 최근 커밋을 취소 한다.
@@ -143,9 +140,28 @@ $ git revert HEAD
 ```
 
 ### $ git restore
-- 
+- restore은 복구를 위한 명령이며, git add 명령으로 Staging Area에 올라간 파일들을 다시 Working Directory로 되돌릴 수도 있습니다.
 ```bash
-$ git restore
+# 최근 커밋의 파일로 복구된다.
+git restore test.html(복구할 파일 명)
+
+# 특정 커밋의 시점으로 특정 파일을 복구한다.
+git restore --source 2664ce8(복구할 COMMIT ID) test.html(복구할 파일 명)
+
+# 특정 파일 staging 취소 가능
+git restore --staged test.html
+```
+
+### 원격 저장소와 로컬 저장소의 소스코드를 일치시키는 방법
+```bash
+# remote tracking branch (origin/main)를 깃의 원격 저장소와 일치 시킨다.
+$ git fetch --prune origin 
+
+# 방금 전 동기화된 remote tracking branch (origin/main)에 로컬 브랜치를 일치 시킨다.
+$ git reset --hard origin/main 
+
+# 만약 작성 중인 코드가 있었고, 필요 없다고 생각하면 git clean을 통하여 삭제한다. (필요에 따라 사용)
+$ git clean
 ```
 
 &nbsp;
