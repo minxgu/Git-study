@@ -71,7 +71,7 @@ $ git commit -m "test 작업 수정 후 abc 추가" --amend
 
 ### $ git push
 - 소스를 원격저장소로 업로드 하기 위해서는 `git push` 명령어를 이용합니다.
-- 기본문법은 `git push [원격저장소] [작업중인 브랜치명]`입니다.
+- 기본문법은 `git push [원격저장소] [작업중인 브랜치명]` 입니다.
 ```bash
 $ git push origin master
 ```
@@ -83,17 +83,18 @@ $ git push origin master
 ### :pushpin: **소스업데이트**
 - 상대방이 커밋한 파일은 명령어를 통해서 직접 업데이트를 하셔야 동기화가 됩니다.  
 - 이때 사용하는 명령어는 `git pull`과 `git fetch`가 있습니다.
+- `pull`과 `fetch`의 차이점은 `merge`작업을 하느냐 안하느냐로 나뉘어지며 `pull`은 `fetch` + `merge`작업이라고 생각하시면 됩니다.
 
 ### $ git pull
-- `pull` 과 `fetch` 의 차이점은 `merge` 작업을 하느냐 안하느냐로 나뉘어지며.
-- `pull` 은 `fetch` + `merge` 작업이라고 생각하시면 됩니다.
 - master 브랜치를 pull하여 업데이트
+- 기본문법은 `git pull [원격저장소이름] [브랜치명]` 입니다.
 ```bash
 $ git pull origin master
 ```
 ### $ git fetch
+- 기본문법은 `git fetch [원격저장소이름]` 입니다.
 ```bash
-$ git fetch origin master
+$ git fetch
 ```
 
 &nbsp;
