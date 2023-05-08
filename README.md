@@ -86,7 +86,7 @@ $ git push origin master
 
 ### $ git pull
 - 원격 저장소의 정보를 가져오면서 자동으로 로컬 브랜치에 병합(Merge)까지 수행해주는 명령어이다.
-- 기본문법은 `git pull [원격저장소이름] [브랜치명]` 입니다.
+- 기본문법은 `git pull [원격저장소] [브랜치명]` 입니다.
 ```bash
 $ git pull origin master
 ```
@@ -94,7 +94,7 @@ $ git pull origin master
 ### $ git fetch
 - 원격 저장소의 커밋들을 로컬 저장소로 가져온다.
 - 그리고 자동으로 병합(Merge)를 해주지 않기 때문에 본인이 직접 확인을 한 후에 병합(Merge)하는 과정을 거쳐야한다.
-- 기본문법은 `git fetch [원격저장소이름]` 입니다.
+- 기본문법은 `git fetch [원격저장소]` 입니다.
 ```bash
 $ git fetch
 ```
