@@ -81,17 +81,19 @@ $ git push origin master
 &nbsp;
 
 ### :pushpin: **소스업데이트**
-- 상대방이 커밋한 파일은 명령어를 통해서 직접 업데이트를 하셔야 동기화가 됩니다.  
-- 이때 사용하는 명령어는 `git pull`과 `git fetch`가 있습니다.
-- `pull`과 `fetch`의 차이점은 `merge`작업을 하느냐 안하느냐로 나뉘어지며 `pull`은 `fetch` + `merge`작업이라고 생각하시면 됩니다.
+> 상대방이 커밋한 파일은 명령어를 통해서 직접 업데이트를 하셔야 동기화가 됩니다.  
+> 이때 사용하는 명령어는 `git pull`과 `git fetch`가 있습니다.
 
 ### $ git pull
-- master 브랜치를 pull하여 업데이트
+- 원격 저장소의 정보를 가져오면서 자동으로 로컬 브랜치에 병합(Merge)까지 수행해주는 명령어이다.
 - 기본문법은 `git pull [원격저장소이름] [브랜치명]` 입니다.
 ```bash
 $ git pull origin master
 ```
+
 ### $ git fetch
+- 원격 저장소의 커밋들을 로컬 저장소로 가져온다.
+- 그리고 자동으로 병합(Merge)를 해주지 않기 때문에 본인이 직접 확인을 한 후에 병합(Merge)하는 과정을 거쳐야한다.
 - 기본문법은 `git fetch [원격저장소이름]` 입니다.
 ```bash
 $ git fetch
