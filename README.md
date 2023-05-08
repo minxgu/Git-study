@@ -199,15 +199,14 @@ $ git branch -d new
 $ git push origin :new
 ```
 
-### $ git checkout
-- master 기준으로 new를 브랜치하면 master와 똑같은 소스코드가 new에도 적용됩니다.
-- 하지만 이 이후로 new에서 코드를 수정하면, master와 new는 서로 다른 코드가 되기 때문에 갈라집니다.
-- 생성된 new 브랜치로 접속하기 위해서는 `git checkout [브랜치명]`을 이용합니다.
+### $ git switch
+- 브랜치 변경하기
+- 기본문법은 `git switch [브랜치명]`입니다.
 ```bash
-$ git checkout new
+$ git switch new
 
-# 브랜치 생성과 동시에 체크아웃 하고자 하면 "-b" 옵션 이용
-$ git checkout -b new
+# 브랜치 생성과 동시에 브랜치를 변경하고자 하면 "-c" 옵션 이용
+$ git switch -c [브랜치명]
 ```
 
 ### $ git merge
