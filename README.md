@@ -58,9 +58,9 @@ $ git add test.html test2.html
 ```
 
 ### $ git commit
-- 파일의 기록을 위해서는 `commit` 작업이 필요합니다.
+- 파일의 기록을 위해서는 커밋작업이 필요합니다.
 - `git commit` 명령을 통해 Staged 상태의 파일을 커밋할 수 있습니다.
-- `-m` 옵션을 이용하여 `commit mesaage`를 작성하는 것을 권장합니다.
+- `-m` 옵션을 이용하여 커밋메세지를 작성하는 것을 권장합니다.
 - 실수로 커밋을 하여, 다시 커밋을 할 경우 커밋을 덮어씌울 수 있습니다. 이때 `--amend` 옵션을 이용합니다.
 ```bash
 $ git commit -m "test 작업"
